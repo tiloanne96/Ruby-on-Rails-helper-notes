@@ -1,0 +1,5 @@
+The command to create rails new app without an specification
+
+  rails new 
+
+
