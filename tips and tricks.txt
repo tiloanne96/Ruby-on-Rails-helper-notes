@@ -1,0 +1,29 @@
+#This file contains some tips and tricks 
+
+#when you have a belongs_to in model, you can get an attribute from the table that belongs_to with 'delegate', EJ.
+	class Profile < ApplicationRecord
+		belongs_to :user #user is another model
+
+		delegate :email, to: :user #its easier profile.email than this, profile.user.email
+	end
+
+#to do between
+	Model.where(created_at: 10.days.ago .. Time.now)
+
+#to specify a relation between models
+	rails generate model comment user:belongs_to body:text
+
+#to use Logger and not puts to show debug info, this will show it in your enviroment .log 
+	Rails.logger.info "DEBUG:: THIS IS A LOGGER MESSAGE #{HERE YOU CAN INTERPOLATE YOUR CODE}"
+
+	tails -f log/development.log | grep DEBUG #this command is entered in console
+
+#compare size, this operator return 1, -1 or 0
+	x <=> y
+	# 1 when left value is bigger
+	# -1 when right value is bigger
+	# 0 when both values are equals
+
+#
+	%w{a b} #this return ["a","b"]
+	%i{a b} #this return [ :a, :b]
